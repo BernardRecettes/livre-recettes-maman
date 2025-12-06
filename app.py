@@ -43,7 +43,7 @@ with col2:
     st.page_link("pages/5_preface.py", label="📖 Préface")
     st.page_link("pages/6_souvenirs.py", label="📚 Souvenirs de famille")
 
-    st.markdown("Pour partager un souvenir lié à Maman ou à sa cuisine :")
+    #st.markdown("Pour partager un souvenir lié à Maman ou à sa cuisine :")
 
 st.markdown("---")
 
@@ -64,6 +64,7 @@ if st.button("✉️ Envoyer un commentaire / une suggestion"):
         "?subject=Commentaires%20sur%20le%20Livre%20de%20Recettes)",
         unsafe_allow_html=True,
     )
+
 
 
 
