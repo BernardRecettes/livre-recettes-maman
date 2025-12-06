@@ -55,11 +55,16 @@ if recherche_ing:
     df_filtre = df_filtre[df_filtre["Clé"].isin(ids_trouves)]
 
 # --- TABLEAU RESUME ---
+# Colonnes utilisées en interne
 colonnes_resume = ["Clé", "id_recette", "titre", "origine", "id_categorie"]
 df_resume = df_filtre[colonnes_resume].copy()
 
 st.write("Résultats trouvés :", df_resume.shape[0])
-st.dataframe(df_resume, use_container_width=True)
+
+# Tableau affiché à l'utilisateur (sans Clé)
+colonnes_affichees = ["id_recette","titre", "origine", "id_categorie"]
+st.dataframe(df_resume[colonnes_affichees], use_container_width=True)
+
 
 # --- SELECTION RECETTE ---
 if df_resume.shape[0] > 0:
@@ -136,4 +141,5 @@ if df_resume.shape[0] > 0:
         file_name=f"Recette_{id_recette_str}_{rec['titre']}.pdf",
         mime="application/pdf",
     )
+
 
