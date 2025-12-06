@@ -46,8 +46,10 @@ Bernard
     """
 )
 # Bouton retour accueil
-if st.button("🏠 Retour à l'accueil"):
+if st.button("🏠 Retour à l'accueil", key="retour_bas_preface"):
     st.switch_page("app.py")
+
+
 
 
 
