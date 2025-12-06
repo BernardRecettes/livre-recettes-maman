@@ -42,6 +42,17 @@ with col2:
     
     st.page_link("pages/0_HOMMAGE.py", label="💐 Page Hommage")
    # st.page_link("pages/5_preface.py", label="📖 Préface")
+    st.markdown("---")
+    st.markdown("Pour commentaires ou suggestions :")
+    
+    if st.button("✉️ Envoyer un commentaire / une suggestion"):
+        st.markdown(
+            "[Si aucun courriel ne s'ouvre, cliquez ici]"
+            "(mailto:livrerecetteadrienne@gmail.com"
+            "?subject=Commentaires%20sur%20le%20Livre%20de%20Recettes%20d%27Adrienne%20Tremblay)",
+            unsafe_allow_html=True,
+        )
+
 
 
 
