@@ -7,9 +7,8 @@ st.title("Souvenirs et anecdotes")
 
 st.markdown(
     """
-Ici, vous pourrez lire les souvenirs, anecdotes et histoires que la famille
-ont partagé par courriel à propos d’Adrienne et de sa cuisine.
+Ici, vous pourrez lire les souvenirs, anecdotes et histoires que la famille a partagés par courriel à propos d’Adrienne et de sa cuisine.
 
-N'hésitez-pas en nous en envoyer pour les partager avec tout le monde. !!!
+N’hésitez pas à nous en envoyer pour les partager avec tout le monde. !!!
 """
 )
