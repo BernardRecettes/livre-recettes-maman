@@ -63,10 +63,11 @@ Bernard
     """,
     unsafe_allow_html=True,
 )
-st.markdown(---)
+st.markdown("---")
 
 if st.button("🏠 Retour à l'accueil", key="retour_bas_preface"):
     st.switch_page("app.py")
+
 
 
 
