@@ -67,11 +67,16 @@ if categorie_choisie != "Toutes les catégories":
     ]
 
 # --- TABLEAU RESUME ---
+# Colonnes utilisées en interne
 colonnes_resume = ["Clé", "id_recette", "titre", "origine", "id_categorie"]
 df_resume = df_filtre[colonnes_resume].copy()
 
 st.write("Résultats trouvés :", df_resume.shape[0])
-st.dataframe(df_resume, use_container_width=True)
+
+# Tableau affiché à l'utilisateur (sans Clé ni id_recette)
+colonnes_affichees = ["titre", "origine", "id_categorie"]
+st.dataframe(df_resume[colonnes_affichees], use_container_width=True)
+
 
 # --- SELECTION RECETTE ---
 if df_resume.shape[0] > 0:
@@ -158,3 +163,4 @@ if df_resume.shape[0] > 0:
             )
 else:
     st.info("Aucune recette trouvée pour cette catégorie.")
+
