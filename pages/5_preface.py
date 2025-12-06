@@ -45,6 +45,10 @@ N'hésitez pas à m'envoyer vos souvenirs à partager via le bouton "Envoyer un 
 Bernard
     """
 )
+# Bouton retour accueil
+if st.button("🏠 Retour à l'accueil"):
+    st.switch_page("app.py")
+
 
 
 
