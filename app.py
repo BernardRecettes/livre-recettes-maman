@@ -42,7 +42,7 @@ with col2:
     
     st.page_link("pages/0_HOMMAGE.py", label="💐 Page Hommage")
     st.page_link("pages/5_preface.py", label="📖 Préface")
-    #st.markdown("---")
+    st.markdown("---")
     st.markdown("Pour commentaires ou suggestions :")
 
 if st.button("✉️ Envoyer un commentaire / une suggestion"):
@@ -62,6 +62,7 @@ if st.button("💬 Partager un souvenir"):
         "?subject=Souvenir%20pour%20le%20Livre%20d%27Adrienne)",
         unsafe_allow_html=True,
     )
+
 
 
 
