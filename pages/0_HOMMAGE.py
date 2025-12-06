@@ -3,9 +3,7 @@ import streamlit as st
 if st.button("🏠 Retour à l'accueil"):
     st.switch_page("app.py")
 
-# Affichage de la photo au-dessus du texte
 st.image("maman.jpg", use_container_width=False, width=300)
-
 
 st.markdown(
     """
