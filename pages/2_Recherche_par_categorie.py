@@ -74,7 +74,7 @@ df_resume = df_filtre[colonnes_resume].copy()
 st.write("Résultats trouvés :", df_resume.shape[0])
 
 # Tableau affiché à l'utilisateur (sans Clé ni id_recette)
-colonnes_affichees = ["titre", "origine", "id_categorie"]
+colonnes_affichees = ["id_recette","titre", "origine", "id_categorie"]
 st.dataframe(df_resume[colonnes_affichees], use_container_width=True)
 
 
@@ -163,4 +163,5 @@ if df_resume.shape[0] > 0:
             )
 else:
     st.info("Aucune recette trouvée pour cette catégorie.")
+
 
