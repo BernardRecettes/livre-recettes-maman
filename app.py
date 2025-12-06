@@ -44,7 +44,8 @@ with col1:
 
 with col2:
     st.page_link("pages/0_HOMMAGE.py", label="💐 Page Hommage")
-    st.page_link("pages/5_preface.py", label="📖 Préface")
+    #st.page_link("pages/5_preface.py", label="📖 Préface")
 
 st.markdown("</div>", unsafe_allow_html=True)
+
 
