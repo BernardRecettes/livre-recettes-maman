@@ -31,6 +31,7 @@ st.image("grand_mere.png", use_container_width=False, width=700)
 
 # Bandeau d’options sous l’image
 st.markdown("<div class='menu-bar'>Choisissez une façon de découvrir les recettes de Maman :</div>", unsafe_allow_html=True)
+st.markdown("---")
 
 col1, col2 = st.columns(2)
 
@@ -64,6 +65,7 @@ if st.button("✉️ Envoyer un commentaire / une suggestion"):
         "?subject=Commentaires%20sur%20le%20Livre%20de%20Recettes)",
         unsafe_allow_html=True,
     )
+
 
 
 
