@@ -1,28 +1,36 @@
 import streamlit as st
 
-# CSS pour fond d'écran avec grand_maman.png
+# Bandeau avec la photo en haut
 st.markdown(
     """
     <style>
-    .stApp {
-        background-image: url("grand_mere.png");
-        background-size: cover;
-        background-position: center;
-        background-attachment: fixed;
+    .hero {
+        position: relative;
+        overflow: hidden;
+        border-radius: 20px;
+        max-height: 260px;
+        margin-bottom: 20px;
+        box-shadow: 0 0 18px rgba(0, 0, 0, 0.25);
+    }
+    .hero img {
+        width: 100%;
+        object-fit: cover;
+        filter: brightness(0.8);
+    }
+    .hero-title {
+        position: absolute;
+        bottom: 20px;
+        left: 30px;
+        color: white;
+        font-size: 30px;
+        font-weight: bold;
+        text-shadow: 0 0 10px rgba(0,0,0,0.7);
     }
     .accueil-container {
-        background: rgba(255, 247, 236, 0.92);
+        background: #fff7ec;
         padding: 30px 40px;
         border-radius: 20px;
-        box-shadow: 0 0 18px rgba(0, 0, 0, 0.25);
-        margin-top: 40px;
-    }
-    .accueil-titre {
-        text-align: center;
-        font-size: 32px;
-        font-weight: bold;
-        color: #5e3b1f;
-        margin-bottom: 5px;
+        box-shadow: 0 0 18px rgba(0, 0, 0, 0.15);
     }
     .accueil-sous-titre {
         text-align: center;
@@ -35,8 +43,12 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
+st.markdown('<div class="hero">', unsafe_allow_html=True)
+st.image("grand_mere.png", use_container_width=True)
+st.markdown('<div class="hero-title">Livre de Recettes d\'Adrienne Tremblay</div>', unsafe_allow_html=True)
+st.markdown('</div>', unsafe_allow_html=True)
+
 st.markdown('<div class="accueil-container">', unsafe_allow_html=True)
-st.markdown('<div class="accueil-titre">Livre de Recettes d\'Adrienne Tremblay</div>', unsafe_allow_html=True)
 st.markdown('<div class="accueil-sous-titre">Choisissez une façon de découvrir les recettes de Maman :</div>', unsafe_allow_html=True)
 
 col1, col2 = st.columns(2)
