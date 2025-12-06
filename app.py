@@ -45,27 +45,28 @@ with col2:
 
     st.markdown("Pour partager un souvenir lié à Maman ou à sa cuisine :")
 
-if st.button("💬 Partager un souvenir"):
-     st.markdown(
-     st.markdown(
-         "[Si aucun courriel ne s'ouvre, cliquez ici]"
-         "[Si aucun courriel ne s'ouvre, cliquez ici]"
-         "(mailto:livrerecetteadrienne@gmail.com"
-         "(mailto:livrerecetteadrienne@gmail.com"
- @@ -56,7 +56,7 @@
-      st.markdown("---")
-      st.markdown("---")
-      st.markdown("Pour commentaires ou suggestions :")
-      st.markdown("Pour commentaires ou suggestions :")
- 
- 
- if st.button("✉️ Envoyer un commentaire / une suggestion"):
+st.markdown("---")
+st.markdown("Pour commentaires ou suggestions :")
+
 if st.button("✉️ Envoyer un commentaire / une suggestion"):
+    st.markdown(
         "[Si aucun courriel ne s'ouvre, cliquez ici]"
         "(mailto:livrerecetteadrienne@gmail.com"
         "?subject=Commentaires%20sur%20le%20Livre%20de%20Recettes)",
         unsafe_allow_html=True,
     )
+
+st.markdown("Pour partager un souvenir lié à Maman ou à sa cuisine :")
+
+if st.button("💬 Partager un souvenir"):
+    st.markdown(
+        "[Si aucun courriel ne s'ouvre, cliquez ici]"
+        "(mailto:livrerecetteadrienne@gmail.com"
+        "?subject=Souvenir%20pour%20le%20Livre%20d%27Adrienne)",
+        unsafe_allow_html=True,
+    )
+
+
 
 
 
