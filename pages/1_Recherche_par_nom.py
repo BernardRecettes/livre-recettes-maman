@@ -157,10 +157,10 @@ st.download_button(
 
 
 st.markdown("---")
-st.subheader("Recette originale manuscrite")
 
-id_recette_str = str(rec["id_recette"])
-image_path = os.path.join("images", f"{id_recette_str}.jpg")  # ou .png selon tes fichiers
+#id_recette_str = str(rec["id_recette"])
+#image_path = os.path.join("images", f"{id_recette_str}.jpg")  # ou .png selon tes fichiers
+
 
 
 
