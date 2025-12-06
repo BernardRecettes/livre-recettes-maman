@@ -3,7 +3,7 @@ import streamlit as st
 if st.button("🏠 Retour à l'accueil"):
     st.switch_page("app.py")
 
-st.image("maman.jpg", use_container_width=False, width=300)
+st.image("maman.JPG", use_container_width=False, width=300)
 
 st.markdown(
     """
@@ -61,3 +61,4 @@ Bernard
     """,
     unsafe_allow_html=True,
 )
+
