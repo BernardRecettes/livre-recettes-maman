@@ -1,17 +1,21 @@
 import streamlit as st
 
-# --- Photo en haut de la page ---
-st.image("grand_mere.png", use_container_width=False, width=350)
-
-# --- Style général de la page d'accueil ---
+# CSS pour fond d'écran avec grand_maman.png
 st.markdown(
     """
     <style>
+    .stApp {
+        background-image: url("grand_mere.png");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+    }
     .accueil-container {
-        background: #fff7ec;
+        background: rgba(255, 247, 236, 0.92);
         padding: 30px 40px;
         border-radius: 20px;
-        box-shadow: 0 0 18px rgba(0, 0, 0, 0.08);
+        box-shadow: 0 0 18px rgba(0, 0, 0, 0.25);
+        margin-top: 40px;
     }
     .accueil-titre {
         text-align: center;
@@ -47,5 +51,3 @@ with col2:
     #st.page_link("pages/5_preface.py", label="📖 Préface")
 
 st.markdown("</div>", unsafe_allow_html=True)
-
-
