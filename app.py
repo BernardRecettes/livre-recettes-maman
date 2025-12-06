@@ -45,7 +45,7 @@ with col2:
 
     st.markdown("Pour partager un souvenir lié à Maman ou à sa cuisine :")
 
-if st.button("💬 Partager un souvenir"):
+ if st.button("💬 Partager un souvenir"):
     st.markdown(
         "[Si aucun courriel ne s'ouvre, cliquez ici]"
         "(mailto:livrerecetteadrienne@gmail.com"
@@ -56,13 +56,14 @@ if st.button("💬 Partager un souvenir"):
      st.markdown("---")
      st.markdown("Pour commentaires ou suggestions :")
 
-if st.button("✉️ Envoyer un commentaire / une suggestion"):
+ if st.button("✉️ Envoyer un commentaire / une suggestion"):
     st.markdown(
         "[Si aucun courriel ne s'ouvre, cliquez ici]"
         "(mailto:livrerecetteadrienne@gmail.com"
         "?subject=Commentaires%20sur%20le%20Livre%20de%20Recettes)",
         unsafe_allow_html=True,
     )
+
 
 
 
