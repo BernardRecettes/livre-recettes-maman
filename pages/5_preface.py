@@ -8,8 +8,6 @@ st.title("Préface")
 
 st.markdown(
     """
-Voici une version au ton plus chaleureux, en gardant votre style et votre voix.
-
 
 Je vous présente aujourd’hui le livre de recettes d’Adrienne, ma chère maman.
 Ce livre n’est pas seulement un recueil de recettes, c’est un morceau de l’histoire de notre famille.
@@ -41,6 +39,9 @@ J’ai aussi essayé de créer une interface simple, chaleureuse et facile d’e
 À ma connaissance, il n’existe que cinq copies papier de ce livre ; grâce à cette version numérique, c’est comme si nous en ajoutions une de plus, commune à toute la famille. Que vous soyez à la maison, chez des amis ou en camping, il suffira d’un téléphone ou d’une tablette pour retrouver les recettes de Maman.
 
 J’espère que vous aurez plaisir à cuisiner ces recettes, à les partager avec vos enfants et petits‑enfants, et à y ajouter, pourquoi pas, vos propres notes et souvenirs.
+
+Bernard
     """
 )
+
 
