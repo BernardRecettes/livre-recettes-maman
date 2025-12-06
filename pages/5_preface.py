@@ -40,8 +40,11 @@ J’ai aussi essayé de créer une interface simple, chaleureuse et facile d’e
 
 J’espère que vous aurez plaisir à cuisiner ces recettes, à les partager avec vos enfants et petits‑enfants, et à y ajouter, pourquoi pas, vos propres notes et souvenirs.
 
+N'hésitez pas à m'envoyer vos souvenirs à partager via le bouton "Envoyer un commentaire/une suggestion". Je pourrai les mettres sur l'Application pour que tout le monde puisse en profiter.
+
 Bernard
     """
 )
+
 
 
