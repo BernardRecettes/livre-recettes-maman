@@ -5,7 +5,7 @@ if st.button("🏠 Retour à l'accueil"):
 
 st.image("maman.JPG", use_container_width=False, width=300)
 
-st.markdown(---)
+st.markdown("---")
 
 st.markdown(
     """
@@ -67,6 +67,7 @@ st.markdown(---)
 
 if st.button("🏠 Retour à l'accueil", key="retour_bas_preface"):
     st.switch_page("app.py")
+
 
 
 
