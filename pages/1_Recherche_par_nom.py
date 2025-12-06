@@ -59,12 +59,17 @@ if recherche_titre:
     )
     df_filtre = df_filtre[masque]
 
-# --- TABLEAU RÉSUMÉ ---
+# --- TABLEAU RESUME ---
+# Colonnes utilisées en interne
 colonnes_resume = ["Clé", "id_recette", "titre", "origine", "id_categorie"]
 df_resume = df_filtre[colonnes_resume].copy()
 
 st.write("Résultats trouvés :", df_resume.shape[0])
-st.dataframe(df_resume, use_container_width=True)
+
+# Tableau affiché à l'utilisateur (sans Clé)
+colonnes_affichees = ["id_recette","titre", "origine", "id_categorie"]
+st.dataframe(df_resume[colonnes_affichees], use_container_width=True)
+
 
 # --- SÉLECTION RECETTE ---
 liste_ids = df_resume["id_recette"].astype(str).dropna().unique()
@@ -162,5 +167,6 @@ if os.path.exists(image_path):
         st.image(image_path, use_container_width=True)
 else:
     st.info("Aucune image manuscrite n'est disponible pour cette recette.")
+
 
 
