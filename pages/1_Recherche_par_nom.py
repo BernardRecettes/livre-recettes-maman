@@ -162,11 +162,8 @@ st.subheader("Recette originale manuscrite")
 id_recette_str = str(rec["id_recette"])
 image_path = os.path.join("images", f"{id_recette_str}.jpg")  # ou .png selon tes fichiers
 
-if os.path.exists(image_path):
-    if st.button("📜 Voir la recette manuscrite", key=f"manuscrit_{id_recette_str}"):
-        st.image(image_path, use_container_width=True)
-else:
-    st.info("Aucune image manuscrite n'est disponible pour cette recette.")
+
+
 
 
 
