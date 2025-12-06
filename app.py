@@ -26,7 +26,8 @@ st.markdown(
 st.markdown("<div class='accueil-titre'>Livre de Recettes d'Adrienne Tremblay</div>", unsafe_allow_html=True)
 
 # Image plein centre
-st.image("grand_mere.png", use_container_width=True)
+st.image("grand_mere.png", use_container_width=False, width=700)
+
 
 # Bandeau d’options sous l’image
 st.markdown("<div class='menu-bar'>Choisissez une façon de découvrir les recettes de Maman :</div>", unsafe_allow_html=True)
@@ -39,4 +40,6 @@ with col1:
 
 with col2:
     st.page_link("pages/3_Recherche_par_ingredients.py", label="🥕 Recherche par ingrédients")
-    st.page_link("pages/0_HOMMAGE.py", label="💐 Page Hommage / Préface")
+    st.page_link("pages/0_HOMMAGE.py", label="💐 Page Hommage")
+    st.page_link("pages/5_preface.py", label=" Préface")
+
