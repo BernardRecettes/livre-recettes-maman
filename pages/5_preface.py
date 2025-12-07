@@ -29,7 +29,7 @@ Aujourd’hui, c’est avec une grande joie que je peux vous offrir la possibili
 Au‑delà de la technique, ce projet est pour moi un chemin de réconciliation et de douceur. Ce n’est pas une tentative d’effacer les erreurs d’un passé plus sombre — certaines blessures restent — mais une façon de me rapprocher de ce qu’il y a de plus beau en moi : le désir de donner, de partager et de transmettre.
 
 En recopiant ces recettes, il m’est souvent arrivé de sourire, parfois même d’éclater de rire. Maman écrivait comme elle cuisinait : avec le cœur plus qu’avec la balance.
-Je suis retombé sur des indications savoureuses comme « une quantité de margarine, grosse comme un œuf » ou « deux bonnes poignées de sel », autant de petits clins d’œil qui faisaient revivre sa voix, son sourire et sa liberté.
+Je suis retombé sur des indications savoureuses comme « une quantité de margarine, grosse comme un œuf », «un brin de beurre » (P74-1) ­­ ou « deux grosse poignées de sel » (P48-1), autant de petits clins d’œil qui faisaient revivre sa voix, son sourire et sa liberté.
 
 Les pages qui m’ont le plus amusé sont sans doute celles des « remèdes de grand‑mère », qui, à mes yeux, devaient surtout fonctionner comme de doux placebos, même si nos ancêtres les préparaient très sérieusement.
 Lisez‑les pour le plaisir, et si le cœur vous en dit, osez même les essayer : vous y retrouverez peut‑être un parfum d’autrefois.
@@ -48,6 +48,7 @@ Bernard
 # Bouton retour accueil
 if st.button("🏠 Retour à l'accueil", key="retour_bas_preface"):
     st.switch_page("app.py")
+
 
 
 
