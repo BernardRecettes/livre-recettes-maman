@@ -49,9 +49,11 @@ st.markdown("---")
 
 st.markdown(
     """
-J'aimerais que vous preniez le temps de jeter un coup d'oeil à la recette P159-2. Essayer de trouvez quelques chose de bizarre. Si vous le trouvez, mettez le dans les commentaires. C,est moi-même qui l'ai écrite.
+J'aimerais que vous preniez le temps de jeter un coup d'oeil à la recette P159-2. Essayer de trouvez quelques chose de bizarre. Si vous le trouvez, mettez le dans les commentaires. C'est moi-même qui l'ai écrite.
 
 Bonne chance.
 
 Bernard.   
 """)
+st.markdown("---")
+
