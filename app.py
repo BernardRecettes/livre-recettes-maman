@@ -44,8 +44,6 @@ with col2:
     st.page_link("pages/5_preface.py", label="📖 Préface")
     st.page_link("pages/6_souvenirs.py", label="📚 Souvenirs de famille")
 
-    #st.markdown("Pour partager un souvenir lié à Maman ou à sa cuisine :")
-
 st.markdown("---")
 
 st.markdown("Pour partager un souvenir lié à Maman ou à sa cuisine :")
@@ -57,7 +55,7 @@ if st.button("💬 Partager un souvenir"):
         unsafe_allow_html=True,
     )
 
-st.markdown("Pour commentaires ou suggestions :")
+st.markdown("Pour commentaires ou suggestions ou même une recette que vous voulez partager :")
 if st.button("✉️ Envoyer un commentaire / une suggestion"):
     st.markdown(
         "[Si aucun courriel ne s'ouvre, cliquez ici]"
@@ -65,6 +63,7 @@ if st.button("✉️ Envoyer un commentaire / une suggestion"):
         "?subject=Commentaires%20sur%20le%20Livre%20de%20Recettes)",
         unsafe_allow_html=True,
     )
+
 
 
 
