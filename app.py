@@ -55,7 +55,7 @@ if st.button("💬 Partager un souvenir"):
         unsafe_allow_html=True,
     )
 
-st.markdown("Pour commentaires ou suggestions ou même une recette que vous voulez partager :")
+st.markdown("Pour commentaires, suggestions ou même une recette que vous voulez partager :")
 if st.button("✉️ Envoyer un commentaire / une suggestion"):
     st.markdown(
         "[Si aucun courriel ne s'ouvre, cliquez ici]"
@@ -63,6 +63,7 @@ if st.button("✉️ Envoyer un commentaire / une suggestion"):
         "?subject=Commentaires%20sur%20le%20Livre%20de%20Recettes)",
         unsafe_allow_html=True,
     )
+
 
 
 
