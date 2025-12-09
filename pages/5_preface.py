@@ -18,7 +18,7 @@ Je veux d’abord remercier de tout cœur Isabelle, qui a eu, il y a des années
 
 Voilà près de vingt ans que maman nous a quittés et, trop souvent, j’ai eu l’impression que son livre s’effaçait doucement dans l’oubli. Avec l’omniprésence d’Internet, nous prenons parfois moins le temps de chercher ces précieuses traces de nos racines, et pourtant ce cahier, c’est un peu l’âme de notre mère. C’est pour cela que j’ai voulu le retranscrire, pour que ses recettes, ses gestes et tout l’amour qu’elle mettait dans sa cuisine restent vivants et accessibles à tous, pour longtemps.
 
-En 2023, un grave accident de travail a bouleversé ma vie et m’a conduit à une retraite anticipée. Je ne le mentionne pas pour me plaindre, mais parce que c’est dans ce nouveau temps qui s’est ouvert devant moi que j’ai trouvé un espace pour me reconstruire.
+En 2023, un grave accident de travail a bouleversé ma vie et m’a contraint à une retraite anticipée. Je ne le mentionne pas pour me plaindre, mais parce que c’est dans ce nouveau temps qui s’est ouvert devant moi que j’ai trouvé un espace pour me reconstruire.
 
 J’ai toujours aimé l’informatique et les gadgets ; alors, lorsque j’ai retrouvé ce précieux cahier, je me suis donné un défi qui venait du cœur : offrir à maman une seconde vie numérique. Le projet n’a pas été de tout repos. Pour le mener à bien, j’ai apprivoisé Microsoft Access et transformé le livre en base de données : ce fut la version 1.0. Mais il fallait installer Access pour l’utiliser, et je voulais que ce cadeau soit le plus simple possible pour chacun.
 
@@ -48,6 +48,7 @@ Bernard
 # Bouton retour accueil
 if st.button("🏠 Retour à l'accueil", key="retour_bas_preface"):
     st.switch_page("app.py")
+
 
 
 
