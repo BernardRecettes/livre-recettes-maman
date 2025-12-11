@@ -57,3 +57,26 @@ Bernard.   
 """)
 st.markdown("---")
 
+st.markdown(
+    """
+  Je me souviens du temps où maman, le cœur grand ouvert,  
+préparait ses fameuses galettes au Quick, celles qu’on aimait tant.  
+Elle y versait tout son amour, et moi, du haut de mon enfance,  
+je l’aidais dans ce grand rituel qui annonçait la fête.  
+
+Un mois avant le jour J, déjà, la maison embaumait la vanille et la joie.  
+Maman rangeait soigneusement ses trésors gourmands,  
+les dissimulant aux goélands affamés que nous étions.  
+Parfois même, elle montait jusqu’au grenier du garage,  
+les scellant dans des sacs verts pour tromper nos regards.  
+
+Mais nos nez curieux trahissaient sa ruse bienveillante.  
+Et, bien malgré elle, nous finissions toujours par trouver le butin.  
+Ravis de notre chapardage, nous croquions les galettes encore glacées,  
+comme si chaque bouchée volée portait le goût du bonheur défendu.   
+  
+Bernard.   
+""")
+st.markdown("---")
+
+
