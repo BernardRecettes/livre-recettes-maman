@@ -129,11 +129,22 @@ st.subheader("Recette originale manuscrite")
 id_recette_str = str(rec["id_recette"])
 image_path = os.path.join("images", f"{id_recette_str}.jpg")  # ou .png
 
-if os.path.exists(image_path):
-    if st.button("📜 Voir la recette manuscrite"):
-        st.image(image_path, use_container_width=True)
+id_recette_str = str(rec["id_recette"])
+youtube_url = rec.get("youtube_url", "")
+
+# Si c'est une recette vidéo (id_recette commence par Y + URL présente)
+if id_recette_str.startswith("Y") and pd.notna(youtube_url) and str(youtube_url).strip() != "":
+    st.markdown("### Vidéo de la recette")
+    st.video(youtube_url)
+
+# Sinon, on garde ta logique actuelle avec l'image manuscrite
 else:
-    st.info("Aucune image manuscrite n'est disponible pour cette recette.")
+    if os.path.exists(image_path):
+        if st.button("📜 Voir la recette manuscrite"):
+            st.image(image_path, use_container_width=True)
+    else:
+        st.info("Aucune image manuscrite n'est disponible pour cette recette.")
+
 
     # --- Fiche PDF ---
 from utils_pdf import generer_fiche_recette_pdf
@@ -160,6 +171,7 @@ st.markdown("---")
 
 #id_recette_str = str(rec["id_recette"])
 #image_path = os.path.join("images", f"{id_recette_str}.jpg")  # ou .png selon tes fichiers
+
 
 
 
