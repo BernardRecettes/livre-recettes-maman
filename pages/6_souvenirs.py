@@ -79,4 +79,11 @@ Bernard.   
 """)
 st.markdown("---")
 
+st.markdown(
+    """
+    Salut Bernard,
+J'ai pris quelques minutes pour regarder ton travail, car on parle réellement ici d'un travail exceptionnel, le travail de Moine qu'Isabelle a fait pour nous fournir une copie papier de ce livre, ne sera jamais oublié, le mien est dans ma cuisine toujours à porter de main et m'en sert très souvent, ma copie fait déjà partie des choses que Ma Fille héritera, non, tu portes cet héritage à un autre niveau, Maman en serait sûrement fière, Papa aussi car il disait a qui voulait l'entendre qu'Adrienne faisait la meilleure cuisine, surtout la tourtière, il faut pas oublier que Papa qui ne faisait que des œufs, une fois Maman partie il s'est servi de ce livre pour faire ses premières "beans" et elles étaient très bonnes, et maintenant qu'il devient numérique, un jour peut-être, quelqu'un, étranger à notre Famille tombera dessus, par accident, et nourrira sa Famille avec les recettes de Maman... Ce serait une belle continuité, merci 
+André.
+""")
+st.markdown("---")
 
