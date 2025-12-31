@@ -74,20 +74,29 @@ df_resume = df_filtre[colonnes_resume].copy()
 st.write("Résultats trouvés :", df_resume.shape[0])
 
 # Tableau affiché à l'utilisateur (sans Clé ni id_recette)
+# **TABLEAU CLIQUABLE** (remplace st.dataframe + selectbox)
+st.dataframe(
+    df_resume[["id_recette", "titre", "origine", "id_categorie"]],
+    use_container_width=True,
+    selection_mode="single-row",
+    key="table_recettes_categorie"
+)
+
+# **RECETTE SÉLECTIONNÉE** (automatique au clic)
+if 'table_recettes_categorie' in st.session_state and st.session_state['table_recettes_categorie']['selected_rows']:
+    selected_idx = st.session_state['table_recettes_categorie']['selected_rows'][0]
+    id_choisi = df_resume.iloc[selected_idx]['id_recette']
+    
+    # Le reste de ton code existant (df_test = ...)
+    df_test = df_recettes[df_recettes["id_recette"].astype(str) == id_choisi]
+    # ... (garde tout le code affichage recette tel quel)
+
 colonnes_affichees = ["id_recette","titre", "origine", "id_categorie"]
 st.dataframe(df_resume[colonnes_affichees], use_container_width=True)
 
 
 # --- SELECTION RECETTE ---
-if df_resume.shape[0] > 0:
-    liste_ids = df_resume["id_recette"].astype(str).dropna().unique()
-    id_choisi = st.selectbox(
-        "Choisir une recette à afficher (id_recette) :",
-        liste_ids
-    )
 
-    if id_choisi:
-        df_test = df_recettes[df_recettes["id_recette"].astype(str) == id_choisi]
         if df_test.shape[0] == 0:
             st.error("Aucune recette trouvée dans df_recettes pour cet id_recette.")
         else:
@@ -163,5 +172,6 @@ if df_resume.shape[0] > 0:
             )
 else:
     st.info("Aucune recette trouvée pour cette catégorie.")
+
 
 
