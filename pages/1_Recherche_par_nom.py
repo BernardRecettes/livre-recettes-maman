@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import unicodedata
-
+import os
 
 if st.button("🏠 Retour à l'accueil"):
     st.switch_page("app.py")
@@ -16,6 +16,7 @@ def sans_accents(texte: str) -> str:
 
 fichier_excel = "Livre Blanc 2.06.xlsm"
 nom_feuille_recettes = "recettes"
+nom_feuille_ingredients = "ingredients"
 
 # --- CHARGEMENT RECETTES ---
 df_rec_brut = pd.read_excel(
@@ -27,21 +28,16 @@ df_rec_brut = pd.read_excel(
 df_recettes = df_rec_brut[1:].copy()
 df_recettes.columns = df_rec_brut.iloc[0]
 df_recettes = df_recettes.loc[:, ~df_recettes.columns.isna()]
+df_recettes["id_recette"] = df_recettes["id_recette"].astype(str)
 
-nom_feuille_ingredients = "ingredients"  # nom exact de l'onglet
-
+# --- CHARGEMENT INGREDIENTS ---
 df_ing_brut = pd.read_excel(
     fichier_excel,
     sheet_name=nom_feuille_ingredients,
-    header=0  # id_cle, id_recette, ingredients
+    header=0
 )
-
 df_ingredients = df_ing_brut[["id_recette", "ingredients"]].copy()
 df_ingredients["id_recette"] = df_ingredients["id_recette"].astype(int)
-
-
-# id_recette en texte pour la sélection
-df_recettes["id_recette"] = df_recettes["id_recette"].astype(str)
 
 st.title("Livre de Recettes de Maman")
 
@@ -60,24 +56,31 @@ if recherche_titre:
     df_filtre = df_filtre[masque]
 
 # --- TABLEAU RESUME ---
-# Colonnes utilisées en interne
 colonnes_resume = ["Clé", "id_recette", "titre", "origine", "id_categorie"]
 df_resume = df_filtre[colonnes_resume].copy()
 
 st.write("Résultats trouvés :", df_resume.shape[0])
 
-# Tableau affiché à l'utilisateur (sans Clé)
+# **TABLEAU CLIQUABLE**
 colonnes_affichees = ["id_recette","titre", "origine", "id_categorie"]
-st.dataframe(df_resume[colonnes_affichees], use_container_width=True)
+table_event = st.dataframe(
+    df_resume[colonnes_affichees],
+    use_container_width=True,
+    selection_mode="single-row",
+    on_select="rerun",
+    key="table_recettes_nom"
+)
 
-
-# --- SÉLECTION RECETTE ---
-liste_ids = df_resume["id_recette"].astype(str).dropna().unique()
-id_choisi = st.selectbox("Choisir une recette à afficher (id_recette) :", liste_ids)
+# --- RECETTE SÉLECTIONNÉE ---
+id_choisi = None
+if 'table_recettes_nom' in st.session_state:
+    selected_rows = st.session_state['table_recettes_nom']['selection']['rows']
+    if selected_rows:
+        selected_idx = list(selected_rows)[0]
+        id_choisi = df_resume.iloc[selected_idx]['id_recette']
 
 if id_choisi:
     df_test = df_recettes[df_recettes["id_recette"].astype(str) == id_choisi]
-
     if df_test.shape[0] == 0:
         st.error("Aucune recette trouvée dans df_recettes pour cet id_recette.")
     else:
@@ -85,97 +88,76 @@ if id_choisi:
 
         col_g, col_d = st.columns([3, 1])
 
-with col_g:
-    st.subheader(str(rec["titre"]))
-    st.write("Origine :", rec["origine"])
-    st.write("Catégorie :", rec["id_categorie"])
+        with col_g:
+            st.subheader(str(rec["titre"]))
+            st.write("Origine :", rec["origine"])
+            st.write("Catégorie :", rec["id_categorie"])
 
-with col_d:
-    st.markdown("**Temperature**")
-    st.write(rec["temperature"])
-    st.markdown("temps_cuisson")
-    st.write(rec["temps_cuisson"])
+        with col_d:
+            st.markdown("**Temperature**")
+            st.write(rec["temperature"])
+            st.markdown("temps_cuisson")
+            st.write(rec["temps_cuisson"])
 
-# Clé numérique de la recette choisie
-cle_num = int(rec["Clé"])
+        # Clé numérique pour retrouver les ingrédients
+        cle_num = int(rec["Clé"])
+        ing_recette = df_ingredients[df_ingredients["id_recette"] == cle_num]
 
-# Ingrédients correspondant à cette clé
-ing_recette = df_ingredients[df_ingredients["id_recette"] == cle_num]
+        st.markdown("### Ingrédients")
+        for i, ligne in ing_recette.iterrows():
+            checked = st.checkbox(
+                ligne["ingredients"],
+                key=f"ing_{cle_num}_{i}"
+            )
 
-#st.markdown("### Ingrédients")
-#st.dataframe(
-#    ing_recette[["ingredients"]],
-#    use_container_width=True,
-#    hide_index=True
-#)
+        st.markdown("### Instructions")
+        st.write(rec["instructions"])
 
-st.markdown("### Ingrédients")
-for i, ligne in ing_recette.iterrows():
-    checked = st.checkbox(ligne["ingredients"], key=f"ing_{cle_num}_{i}")
-    # Optionnel : faire quelque chose avec 'checked'
+        if pd.notna(rec["note"]) and str(rec["note"]).strip() != "":
+            st.markdown("### Note")
+            st.write(rec["note"])
 
-st.markdown("### Instructions")
-st.write(rec["instructions"])
-if pd.notna(rec["note"]) and str(rec["note"]).strip() != "":
-    st.markdown("### Note")
-    st.write(rec["note"])
-import os  # si ce n'est pas déjà en haut du fichier
-    # --- Recette manuscrite ---
-    #import os  # à mettre en haut du fichier si tu préfères
+        # --- Recette manuscrite / Vidéo ---
+        st.markdown("---")
+        st.subheader("Recette originale manuscrite")
 
-st.markdown("---")
-st.subheader("Recette originale manuscrite")
+        id_recette_str = str(rec["id_recette"])
+        image_path = os.path.join("images", f"{id_recette_str}.jpg")
 
-id_recette_str = str(rec["id_recette"])
-image_path = os.path.join("images", f"{id_recette_str}.jpg")  # ou .png
+        youtube_url = rec.get("youtube_url", "")
 
-id_recette_str = str(rec["id_recette"])
-youtube_url = rec.get("youtube_url", "")
+        # Si c'est une recette vidéo (id_recette commence par Y + URL présente)
+        if id_recette_str.startswith("Y") and pd.notna(youtube_url) and str(youtube_url).strip() != "":
+            st.markdown("### Vidéo de la recette")
+            st.video(youtube_url)
+        else:
+            if os.path.exists(image_path):
+                if st.button("📜 Voir la recette manuscrite", key=f"manuscrit_{id_recette_str}"):
+                    st.image(image_path, use_container_width=True)
+            else:
+                st.info("Aucune image manuscrite n'est disponible pour cette recette.")
 
-# Si c'est une recette vidéo (id_recette commence par Y + URL présente)
-if id_recette_str.startswith("Y") and pd.notna(youtube_url) and str(youtube_url).strip() != "":
-    st.markdown("### Vidéo de la recette")
-    st.video(youtube_url)
+        # --- Fiche PDF ---
+        from utils_pdf import generer_fiche_recette_pdf
 
-# Sinon, on garde ta logique actuelle avec l'image manuscrite
+        st.markdown("---")
+        st.subheader("📥 Télécharger la fiche")
+
+        pdf_bytes = generer_fiche_recette_pdf(
+            rec,
+            ing_recette,
+            id_recette_str,
+            image_path if os.path.exists(image_path) else None,
+        )
+
+        st.download_button(
+            label="📄 Télécharger en PDF",
+            data=pdf_bytes,
+            file_name=f"Recette_{id_recette_str}_{rec['titre']}.pdf",
+            mime="application/pdf",
+        )
 else:
-    if os.path.exists(image_path):
-        if st.button("📜 Voir la recette manuscrite"):
-            st.image(image_path, use_container_width=True)
+    if df_resume.shape[0] > 0:
+        st.info("👆 **Cliquez sur une ligne du tableau pour voir la recette**")
     else:
-        st.info("Aucune image manuscrite n'est disponible pour cette recette.")
-
-
-    # --- Fiche PDF ---
-from utils_pdf import generer_fiche_recette_pdf
-
-st.markdown("---")
-st.subheader("📥 Télécharger la fiche")
-
-pdf_bytes = generer_fiche_recette_pdf(
-    rec,
-    ing_recette,
-    id_recette_str,
-    image_path if os.path.exists(image_path) else None,
-)
-
-st.download_button(
-    label="📄 Télécharger en PDF",
-    data=pdf_bytes,
-    file_name=f"Recette_{id_recette_str}_{rec['titre']}.pdf",
-    mime="application/pdf",
-)
-
-
-st.markdown("---")
-
-#id_recette_str = str(rec["id_recette"])
-#image_path = os.path.join("images", f"{id_recette_str}.jpg")  # ou .png selon tes fichiers
-
-
-
-
-
-
-
-
+        st.info("Aucune recette trouvée.")
