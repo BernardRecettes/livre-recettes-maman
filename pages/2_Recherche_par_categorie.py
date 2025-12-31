@@ -71,9 +71,9 @@ df_resume = df_filtre[colonnes_resume].copy()
 
 st.write("Résultats trouvés :", df_resume.shape[0])
 
-# **TABLEAU CLIQUABLE** ← NOUVEAU !
+# **TABLEAU CLIQUABLE**
 colonnes_affichees = ["id_recette","titre", "origine", "id_categorie"]
-table_event = st.dataframe(
+st.dataframe(
     df_resume[colonnes_affichees],
     use_container_width=True,
     selection_mode="single-row",
@@ -97,12 +97,12 @@ if df_resume.shape[0] > 0 and id_choisi:
         rec = df_test.iloc[0]
 
         col_g, col_d = st.columns([3, 1])
-
+        
         with col_g:
             st.subheader(str(rec["titre"]))
             st.write("Origine :", rec["origine"])
             st.write("Catégorie(s) :", rec["id_categorie"])
-
+        
         with col_d:
             st.markdown("**Temperature**")
             st.write(rec["temperature"])
@@ -127,4 +127,46 @@ if df_resume.shape[0] > 0 and id_choisi:
             st.markdown("### Note")
             st.write(rec["note"])
 
-        # ---
+        # --- Recette manuscrite / Vidéo ✅ AJOUTÉ ---
+        st.markdown("---")
+        st.subheader("Recette originale manuscrite")
+
+        id_recette_str = str(rec["id_recette"])
+        image_path = os.path.join("images", f"{id_recette_str}.jpg")
+        youtube_url = rec.get("youtube_url", "")
+
+        # Vidéo Yxxx
+        if id_recette_str.startswith("Y") and pd.notna(youtube_url) and str(youtube_url).strip() != "":
+            st.markdown("### Vidéo de la recette")
+            st.video(youtube_url)
+        # Photo P/E
+        elif os.path.exists(image_path):
+            if st.button("📜 Voir la recette manuscrite", key=f"manuscrit_{id_recette_str}"):
+                st.image(image_path, use_container_width=True)
+        else:
+            st.info("Aucune image manuscrite n'est disponible pour cette recette.")
+
+        # --- Fiche PDF ---
+        from utils_pdf import generer_fiche_recette_pdf
+
+        st.markdown("---")
+        st.subheader("📥 Télécharger la fiche")
+
+        pdf_bytes = generer_fiche_recette_pdf(
+            rec,
+            ing_recette,
+            id_recette_str,
+            image_path if os.path.exists(image_path) else None,
+        )
+
+        st.download_button(
+            label="📄 Télécharger en PDF",
+            data=pdf_bytes,
+            file_name=f"Recette_{id_recette_str}_{rec['titre']}.pdf",
+            mime="application/pdf",
+        )
+else:
+    if df_resume.shape[0] > 0:
+        st.info("👆 **Cliquez sur une ligne du tableau pour voir la recette**")
+    else:
+        st.info("Aucune recette trouvée pour cette catégorie.")
